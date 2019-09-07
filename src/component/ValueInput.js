@@ -12,10 +12,10 @@ export default class ValueInput extends React.Component {
           label={title}
           variant="outlined"
           margin="normal"
-          type="number"
-          fullWidth="true"
+          type="Number"
           value={value}
           onChange={e => onTextChange(id, e.target.value)}
+          fullWidth
         />
       </div>
     )

@@ -6,25 +6,20 @@ import Header from './component/Header';
 import InputSection from './component/InputSection';
 
 export default class App extends React.Component {
+  initState = {
+    priceA: '',
+    amountA: '',
+    priceB: '',
+    amountB: '',
+    msg: ''
+  }
   constructor(props) {
     super(props)
-    this.state = {
-      priceA: '',
-      amountA: '',
-      priceB: '',
-      amountB: '',
-      msg: ''
-    }
+    this.state = this.initState
   }
 
   _onClearValue = () => {
-    this.setState({ 
-      priceA: '',
-      amountA: '',
-      priceB: '',
-      amountB: '',
-      msg: ''
-    })
+    this.setState(this.initState)
   }
 
   _onTextChange = (id, text) => {
@@ -63,10 +58,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    const result = this.state.msg !== '' ? 
-      <h1 style={resultStyle}>{this.state.msg}</h1> :
-      <h1 />
-
     return (
       <div>
         <Header />
@@ -86,7 +77,7 @@ export default class App extends React.Component {
             onTextChange={this._onTextChange}
           />
         </div>
-        {result}
+        <p style={resultStyle}>{this.state.msg}</p>
         <BaseButton title="入力をクリア" onClick={this._onClearValue} />
         <BaseButton title="比較" onClick={this._onCompare} />
       </div>
@@ -104,5 +95,6 @@ const resultStyle = {
   backgroundColor: '#EA7A6E',
   width: '100%',
   textAlign: 'center',
-  fontSize: 20
+  fontSize: 20,
+  lineHeight: '20px'
 }
